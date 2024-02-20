@@ -7,15 +7,16 @@ import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
 import { Ecommerce, Orders,Line, Employees, Customers, Calendar, Stacked, Pyramid, Kanban, Area, Bar, Pie, Financial, ColorMapping, ColorPicker, Editor } from './pages';
 import { useStateContext} from './Contexts/ContextProvider';
 const App = () => {
-  const {activeMenu} = useStateContext();
+  const {activeMenu, themeSettings,setThemeSettings,currentColor, currentMode} = useStateContext();
   return (   
-    <div>
+    <div className={currentMode === "Dark"? 'dark':""}>
       <BrowserRouter>
         <div className='flex relative dark:bg-main-dark-bg'>
 
           <div className='fixed right-4 bottom-4' style={{ zIndex: "1000" }}>
             <TooltipComponent content="Settings" position='Top'>
-              <button className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white' style={{ background: "blue", borderRadius: "50%" }}>
+              <button className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white' style={{ background:currentColor, borderRadius: "50%" }}
+                onClick={() => setThemeSettings(true)}>
                 <FiSettings size={25} />
               </button>
             </TooltipComponent>
@@ -31,13 +32,14 @@ const App = () => {
             </div>
             )}
             
-          <div className={activeMenu ? " md:ml-72 dark:bg-main-bg bg-main-bg min-h-screen w-full" : " dark:bg-main-bg bg-main-bg min-h-screen w-full flex-2 "}>
+          <div className={activeMenu ? " md:ml-72 dark:bg-main-dark-bg bg-main-bg min-h-screen w-full" : " dark:bg-main-dark-bg bg-main-bg min-h-screen w-full flex-2 "}>
             <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg'>
               <Navbar />
             </div>
           
 
             <div>
+              {themeSettings && <ThemeSettings />}
               <Routes>
                 {/* Dash Board */}
                 <Route path="/" element={<Ecommerce />} />

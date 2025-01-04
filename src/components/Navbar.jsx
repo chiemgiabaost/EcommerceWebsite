@@ -6,7 +6,7 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-import avatar from '../data/avatar.jpg';
+import avatar from '../data/bao-avatar.jpg';
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../Contexts/ContextProvider';
 
@@ -48,7 +48,7 @@ const Navbar = () => {
             <img src={avatar} alt="avatar" className='w-8 h-8 rounded-full' />
             <p>
               <span className='text-gray-400 text-14'>Hi, </span> {' '}
-              <span className='text-gray-400 font-bold ml-1 text-14'>Michael</span>
+              <span className='text-gray-400 font-bold ml-1 text-14'>Gia Bao</span>
             </p>
             <MdKeyboardArrowDown className='text-gray-400 text-14' />
           </div>
